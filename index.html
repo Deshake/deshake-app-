@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Deshake - गाँव से अपना काम</title>
 
   <style>
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -35,13 +37,17 @@
       padding: 12px;
       text-align: center;
       border-bottom: 1px solid #ddd;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
 
     nav a {
       color: #6a1b9a;
       text-decoration: none;
-      margin: 0 8px;
+      margin: 0 6px;
       font-weight: bold;
+      font-size: 14px;
     }
 
     .hero {
@@ -68,11 +74,12 @@
       background: white;
       margin: 15px auto;
       padding: 22px;
-      max-width: 500px;
+      max-width: 550px;
       border-radius: 15px;
       box-shadow: 0 3px 12px rgba(0,0,0,0.08);
     }
 
+    .card h2,
     .card h3 {
       color: #6a1b9a;
     }
@@ -86,6 +93,103 @@
       text-decoration: none;
       font-weight: bold;
       margin-top: 10px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .ai-box {
+      background: #f3e5f5;
+      border: 2px solid #6a1b9a;
+      border-radius: 18px;
+      padding: 25px;
+      max-width: 550px;
+      margin: auto;
+      text-align: left;
+    }
+
+    .ai-box h2 {
+      color: #6a1b9a;
+      text-align: center;
+    }
+
+    textarea {
+      width: 100%;
+      box-sizing: border-box;
+      min-height: 110px;
+      padding: 14px;
+      border: 1px solid #bbb;
+      border-radius: 10px;
+      font-size: 16px;
+      resize: vertical;
+      font-family: Arial, sans-serif;
+    }
+
+    .step {
+      background: white;
+      margin: 12px 0;
+      padding: 15px;
+      border-radius: 10px;
+      border-left: 5px solid #6a1b9a;
+      text-align: left;
+    }
+
+    .step button {
+      background: #6a1b9a;
+      color: white;
+      border: none;
+      padding: 9px 15px;
+      border-radius: 7px;
+      margin-top: 8px;
+      cursor: pointer;
+    }
+
+    .progress {
+      height: 18px;
+      background: #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 15px 0;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: #6a1b9a;
+      transition: width 0.3s;
+    }
+
+    #result {
+      margin-top: 20px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      max-width: 650px;
+      margin: auto;
+    }
+
+    .feature {
+      background: white;
+      padding: 18px 10px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+
+    .feature h3 {
+      margin: 5px 0;
+      color: #6a1b9a;
+    }
+
+    .chat-answer {
+      margin-top: 18px;
+      padding: 16px;
+      background: white;
+      border-radius: 12px;
+      border-left: 5px solid #6a1b9a;
+      line-height: 1.6;
+      min-height: 30px;
     }
 
     footer {
@@ -95,74 +199,761 @@
       padding: 20px;
       margin-top: 30px;
     }
+
+    @media (max-width: 600px) {
+
+      header h1 {
+        font-size: 30px;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 5px;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h2 {
+        font-size: 24px;
+      }
+
+    }
+
   </style>
 </head>
 
+
 <body>
 
+<!-- HEADER -->
+
 <header>
+
   <h1>Deshake</h1>
-  <p>गाँव से अपना काम • कमाई • अवसर</p>
+
+  <p>
+    गाँव से अपना काम • Skill • Job • Business • कमाई
+  </p>
+
 </header>
 
+
+<!-- NAVIGATION -->
+
 <nav>
+
   <a href="#home">Home</a>
+
+  <a href="#study">Study AI</a>
+
+  <a href="#tutor">AI Tutor</a>
+
   <a href="#work">अपना काम</a>
+
   <a href="#products">Products</a>
+
+  <a href="#jobs">Jobs</a>
+
   <a href="#contact">Contact</a>
+
 </nav>
 
+
+<!-- HERO -->
+
 <section class="hero" id="home">
-  <h2>गाँव से अपना काम शुरू करें</h2>
+
+  <h2>
+    🌾 गाँव से अपना काम शुरू करें
+  </h2>
+
   <p>
-    Deshake एक डिजिटल मंच है जहाँ स्थानीय लोगों,
-    महिलाओं, छोटे व्यवसायों और creators को
-    अपने काम और products को आगे बढ़ाने का अवसर मिलेगा।
+
+    Deshake एक डिजिटल मंच है जहाँ
+    स्थानीय लोगों, महिलाओं, छोटे व्यवसायों
+    और creators को सीखने, काम करने,
+    नौकरी खोजने और अपना सामान बेचने
+    का अवसर मिलेगा।
+
   </p>
+
+  <p>
+    <strong>
+      सीखें → Skill पाएँ → काम करें → बेचें → कमाएँ
+    </strong>
+  </p>
+
 </section>
+
+
+<!-- DESHAKE VISION -->
+
+<section class="section">
+
+  <div class="feature-grid">
+
+    <div class="feature">
+
+      <div style="font-size:35px;">🤖</div>
+
+      <h3>AI Tutor</h3>
+
+      <p>
+        काम और skill से जुड़े सवाल पूछें।
+      </p>
+
+    </div>
+
+
+    <div class="feature">
+
+      <div style="font-size:35px;">📚</div>
+
+      <h3>Skills</h3>
+
+      <p>
+        नई skills सीखें और practice करें।
+      </p>
+
+    </div>
+
+
+    <div class="feature">
+
+      <div style="font-size:35px;">💼</div>
+
+      <h3>Jobs</h3>
+
+      <p>
+        अपनी skill के अनुसार काम खोजें।
+      </p>
+
+    </div>
+
+
+    <div class="feature">
+
+      <div style="font-size:35px;">🛍️</div>
+
+      <h3>अपना सामान बेचें</h3>
+
+      <p>
+        आगे चलकर अपना product upload करके बेचें।
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- DESHAKE STUDY AI -->
+
+<section class="section" id="study">
+
+  <div class="ai-box">
+
+    <h2>🤖 Deshake Study AI</h2>
+
+    <p style="text-align:center;">
+
+      <strong>
+        काम शुरू करो • समझो • पूरा करो
+      </strong>
+
+    </p>
+
+    <p>
+
+      विद्यार्थी या कोई भी व्यक्ति
+      अपना आज का काम यहाँ लिख सकता है।
+      Deshake उसे छोटे-छोटे steps में
+      पूरा करने में मदद करेगा।
+
+    </p>
+
+
+    <textarea
+      id="goal"
+      placeholder="उदाहरण: मुझे Maths Chapter 5 के questions पूरे करने हैं।">
+    </textarea>
+
+
+    <br>
+
+
+    <button
+      class="button"
+      onclick="createPlan()">
+
+      मेरा Plan बनाओ
+
+    </button>
+
+
+    <div id="result"></div>
+
+  </div>
+
+</section>
+
+
+<!-- DESHAKE AI TUTOR -->
+
+<section class="section" id="tutor">
+
+  <div class="ai-box">
+
+    <h2>
+      🤖 Deshake AI Tutor
+    </h2>
+
+    <p style="text-align:center;">
+
+      अपने काम, Skill, Job या Business
+      से जुड़ा सवाल पूछें।
+
+    </p>
+
+
+    <textarea
+      id="userQuestion"
+      placeholder="उदाहरण: मैं घर से कौन सा काम शुरू कर सकती हूँ?">
+    </textarea>
+
+
+    <button
+      class="button"
+      onclick="askDeshakeTutor()">
+
+      📤 सवाल भेजें
+
+    </button>
+
+
+    <div
+      id="tutorAnswer"
+      class="chat-answer">
+
+      🤖 नमस्ते! मैं Deshake AI Tutor हूँ।
+      अपना सवाल लिखकर भेजें।
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- WORK -->
 
 <section class="section" id="work">
+
   <div class="card">
-    <h3>💼 अपना काम जोड़ें</h3>
+
+    <h2>
+      💼 अपना काम जोड़ें
+    </h2>
+
     <p>
-      आगे चलकर आप अपने products, services और
-      काम के अवसर Deshake पर जोड़ सकेंगे।
+
+      आगे चलकर Deshake पर आप
+      अपना product, service या
+      local business जोड़ सकेंगे।
+
     </p>
+
+    <p>
+
+      उदाहरण:
+
+    </p>
+
+    <p>
+
+      🧵 सिलाई<br>
+      🎨 Madhubani Art<br>
+      🧺 Handicrafts<br>
+      👗 कपड़े<br>
+      🍲 Local Food<br>
+      💻 Digital Services
+
+    </p>
+
+    <button
+      class="button"
+      onclick="comingSoon('अपना सामान बेचने की सुविधा')">
+
+      🛍️ अपना सामान बेचें
+
+    </button>
+
   </div>
+
 </section>
+
+
+<!-- JOBS -->
+
+<section class="section" id="jobs">
+
+  <div class="card">
+
+    <h2>
+      💼 Skills और Jobs
+    </h2>
+
+    <p>
+
+      अपनी skill सीखें और
+      आगे चलकर उससे संबंधित
+      काम और नौकरी खोजें।
+
+    </p>
+
+    <div class="feature">
+
+      <h3>🎯 Skill सीखें</h3>
+
+      <p>
+        Digital, Handicraft, Sewing,
+        Farming, Business और अन्य skills।
+      </p>
+
+    </div>
+
+    <div class="feature">
+
+      <h3>🔎 Job खोजें</h3>
+
+      <p>
+        Skill के अनुसार local और
+        digital work opportunities।
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- DIGITAL PRODUCTS -->
 
 <section class="section" id="products">
+
   <div class="card">
-    <h3>📘 Gaon Se Apna Kaam - Deshake</h3>
+
+    <h2>
+      📘 Gaon Se Apna Kaam - Deshake
+    </h2>
+
     <p>
-      अपना काम शुरू करने और आगे बढ़ाने के लिए
-      practical digital guide।
+
+      अपना काम शुरू करने और
+      आगे बढ़ाने के लिए practical
+      digital guide।
+
     </p>
 
-    <p><strong>₹499</strong></p>
+    <p>
 
-    <a class="button"
-       href="https://ownstreet.in/anukumari/p/gan-se-apna-kaam-deshake"
-       target="_blank">
-       Buy Now
+      <strong>₹499</strong>
+
+    </p>
+
+
+    <a
+      class="button"
+      href="https://ownstreet.in/anukumari/p/gan-se-apna-kaam-deshake"
+      target="_blank"
+      rel="noopener">
+
+      🛒 Buy Now
+
     </a>
+
   </div>
+
 </section>
+
+
+<!-- FUTURE SELLER -->
+
+<section class="section">
+
+  <div class="card">
+
+    <h2>
+      🛍️ Deshake Seller Marketplace
+    </h2>
+
+    <p>
+
+      भविष्य में कोई भी व्यक्ति
+      अपना सामान upload करके
+      Deshake पर बेच सकेगा।
+
+    </p>
+
+    <p>
+
+      📷 Product Photo<br>
+      📝 Product Name<br>
+      💰 Price<br>
+      📦 Product Details<br>
+      🛒 Customer Order
+
+    </p>
+
+    <button
+      class="button"
+      onclick="comingSoon('Seller Marketplace')">
+
+      जल्द उपलब्ध होगा
+
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- CONTACT -->
 
 <section class="section" id="contact">
+
   <div class="card">
-    <h3>📞 Deshake से जुड़ें</h3>
+
+    <h2>
+      📞 Deshake से जुड़ें
+    </h2>
+
     <p>
-      जल्द ही यहाँ registration और
-      अपना काम जोड़ने की सुविधा उपलब्ध होगी।
+
+      Deshake का उद्देश्य गाँव,
+      महिलाओं, creators और छोटे
+      businesses को digital अवसर
+      देना है।
+
     </p>
+
+    <p>
+
+      जल्द ही यहाँ registration,
+      seller account और
+      अपना काम जोड़ने की सुविधा
+      उपलब्ध होगी।
+
+    </p>
+
   </div>
+
 </section>
 
+
+<!-- FOOTER -->
+
 <footer>
-  <p>© 2026 Deshake</p>
-  <p>गाँव से डिजिटल अवसरों की ओर</p>
+
+  <p>
+    © 2026 Deshake
+  </p>
+
+  <p>
+    गाँव से डिजिटल अवसरों की ओर
+  </p>
+
 </footer>
 
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+let steps = [];
+
+let completed = 0;
+
+
+/* STUDY AI */
+
+function createPlan() {
+
+  const goal =
+    document.getElementById("goal").value.trim();
+
+
+  if (!goal) {
+
+    alert("पहले अपना काम लिखिए।");
+
+    return;
+
+  }
+
+
+  steps = [
+
+    "अपने काम को समझें और जरूरी सामग्री तैयार करें।",
+
+    "काम का पहला छोटा हिस्सा पूरा करें।",
+
+    "अपने काम को जाँचें और गलती सुधारें।",
+
+    "अगला हिस्सा पूरा करें।",
+
+    "पूरे काम की दोबारा समीक्षा करें।",
+
+    "अंतिम जाँच करें और अपना काम पूरा करें।"
+
+  ];
+
+
+  completed = 0;
+
+
+  showSteps(goal);
+
+}
+
+
+/* SHOW PLAN */
+
+function showSteps(goal) {
+
+  let html = "";
+
+
+  html += "<h3>🎯 आपका Goal</h3>";
+
+  html +=
+    "<p><strong>" +
+    escapeHtml(goal) +
+    "</strong></p>";
+
+
+  html +=
+    "<p>Progress: <span id='percent'>0%</span></p>";
+
+
+  html += `
+
+    <div class="progress">
+
+      <div
+        class="progress-bar"
+        id="progressBar">
+      </div>
+
+    </div>
+
+  `;
+
+
+  steps.forEach(function(step, index) {
+
+    html += `
+
+      <div
+        class="step"
+        id="step-${index}">
+
+        <strong>
+          Step ${index + 1}
+        </strong>
+
+        <p>
+          ${step}
+        </p>
+
+        <button
+          onclick="completeStep(${index})">
+
+          यह Step पूरा हुआ
+
+        </button>
+
+      </div>
+
+    `;
+
+  });
+
+
+  html +=
+    "<div id='completeMessage'></div>";
+
+
+  document.getElementById("result").innerHTML =
+    html;
+
+}
+
+
+/* COMPLETE STEP */
+
+function completeStep(index) {
+
+  const step =
+    document.getElementById("step-" + index);
+
+
+  if (
+    step.dataset.completed === "true"
+  ) {
+
+    return;
+
+  }
+
+
+  step.dataset.completed = "true";
+
+
+  step.style.opacity = "0.55";
+
+
+  completed++;
+
+
+  const percent =
+    Math.round(
+      (completed / steps.length) * 100
+    );
+
+
+  document.getElementById("percent").innerText =
+    percent + "%";
+
+
+  document.getElementById("progressBar").style.width =
+    percent + "%";
+
+
+  if (completed === steps.length) {
+
+    document.getElementById(
+      "completeMessage"
+    ).innerHTML = `
+
+      <div class="card">
+
+        <h2>
+          🎉 काम पूरा हो गया!
+        </h2>
+
+        <p>
+          आपने अपना पूरा Goal पूरा कर लिया।
+        </p>
+
+        <strong>
+          100% Complete
+        </strong>
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+/* DESHAKE AI TUTOR - DEMO */
+
+function askDeshakeTutor() {
+
+  const question =
+    document
+      .getElementById("userQuestion")
+      .value
+      .trim();
+
+
+  const answer =
+    document.getElementById("tutorAnswer");
+
+
+  if (!question) {
+
+    answer.innerHTML =
+      "कृपया पहले अपना सवाल लिखें।";
+
+    return;
+
+  }
+
+
+  answer.innerHTML = `
+
+    <strong>
+      🤖 Deshake AI Tutor
+    </strong>
+
+    <p>
+      आपने पूछा:
+      <strong>
+        ${escapeHtml(question)}
+      </strong>
+    </p>
+
+    <p>
+      अभी Deshake AI Tutor का
+      demonstration mode चल रहा है।
+    </p>
+
+    <p>
+      अगले चरण में इसे सुरक्षित AI
+      connection से जोड़ा जाएगा ताकि
+      आप अपने सवाल का वास्तविक AI
+      जवाब प्राप्त कर सकें।
+    </p>
+
+    <p>
+      🌾 Deshake का लक्ष्य है:
+      सीखें → Skill पाएँ → काम करें →
+      अपना सामान बेचें → कमाएँ।
+    </p>
+
+  `;
+
+}
+
+
+/* COMING SOON */
+
+function comingSoon(feature) {
+
+  alert(
+    feature +
+    " की सुविधा Deshake के अगले चरण में उपलब्ध होगी।"
+  );
+
+}
+
+
+/* SECURITY */
+
+function escapeHtml(text) {
+
+  const div =
+    document.createElement("div");
+
+
+  div.innerText = text;
+
+
+  return div.innerHTML;
+
+}
+
+</script>
+
+
 </body>
+
 </html>
