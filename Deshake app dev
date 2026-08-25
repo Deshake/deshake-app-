@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deshake - गाँव से अपना काम</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fffaf3;
+      color: #333;
+    }
+
+    header {
+      background: #6a1b9a;
+      color: white;
+      padding: 25px 18px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 34px;
+    }
+
+    header p {
+      font-size: 17px;
+      margin-bottom: 0;
+    }
+
+    nav {
+      background: white;
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    nav a {
+      color: #6a1b9a;
+      text-decoration: none;
+      margin: 0 7px;
+      font-weight: bold;
+    }
+
+    .hero {
+      padding: 35px 20px;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 28px;
+      color: #6a1b9a;
+    }
+
+    .hero p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .section {
+      padding: 25px 20px;
+      text-align: center;
+    }
+
+    .card {
+      background: white;
+      margin: 15px auto;
+      padding: 22px;
+      max-width: 500px;
+      border-radius: 15px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    }
+
+    .card h3 {
+      color: #6a1b9a;
+    }
+
+    .button {
+      display: inline-block;
+      background: #e65100;
+      color: white;
+      padding: 14px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 10px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .ai-box {
+      background: #f3e5f5;
+      border: 2px solid #6a1b9a;
+      border-radius: 18px;
+      padding: 25px;
+      max-width: 550px;
+      margin: auto;
+      text-align: left;
+    }
+
+    .ai-box h2 {
+      color: #6a1b9a;
+      text-align: center;
+    }
+
+    textarea {
+      width: 100%;
+      box-sizing: border-box;
+      min-height: 110px;
+      padding: 14px;
+      border: 1px solid #bbb;
+      border-radius: 10px;
+      font-size: 16px;
+      resize: vertical;
+    }
+
+    .step {
+      background: white;
+      margin: 12px 0;
+      padding: 15px;
+      border-radius: 10px;
+      border-left: 5px solid #6a1b9a;
+    }
+
+    .step button {
+      background: #6a1b9a;
+      color: white;
+      border: none;
+      padding: 9px 15px;
+      border-radius: 7px;
+      margin-top: 8px;
+      cursor: pointer;
+    }
+
+    .progress {
+      height: 18px;
+      background: #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 15px 0;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: #6a1b9a;
+      transition: width 0.3s;
+    }
+
+    #result {
+      margin-top: 20px;
+    }
+
+    footer {
+      background: #6a1b9a;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Deshake</h1>
+  <p>गाँव से अपना काम • कमाई • अवसर</p>
+</header>
+
+<nav>
+  <a href="#home">Home</a>
+  <a href="#study">Study AI</a>
+  <a href="#work">अपना काम</a>
+  <a href="#products">Products</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<section class="hero" id="home">
+  <h2>गाँव से अपना काम शुरू करें</h2>
+  <p>
+    Deshake एक डिजिटल मंच है जहाँ स्थानीय लोगों,
+    महिलाओं, छोटे व्यवसायों और creators को
+    अपने काम और products को आगे बढ़ाने का अवसर मिलेगा।
+  </p>
+</section>
+
+
+<!-- DESHAKE STUDY AI -->
+
+<section class="section" id="study">
+
+  <div class="ai-box">
+
+    <h2>🤖 Deshake Study AI</h2>
+
+    <p style="text-align:center;">
+      <strong>काम शुरू करो • समझो • पूरा करो</strong>
+    </p>
+
+    <p>
+      विद्यार्थी अपना आज का काम यहाँ लिखें।
+      Deshake Study AI उसे छोटे-छोटे steps में पूरा करने में मदद करेगा।
+    </p>
+
+    <textarea
+      id="goal"
+      placeholder="उदाहरण: मुझे Maths Chapter 5 के questions पूरे करने हैं।">
+    </textarea>
+
+    <br>
+
+    <button class="button" onclick="createPlan()">
+      मेरा Plan बनाओ
+    </button>
+
+    <div id="result"></div>
+
+  </div>
+
+</section>
+
+
+<section class="section" id="work">
+
+  <div class="card">
+
+    <h3>💼 अपना काम जोड़ें</h3>
+
+    <p>
+      आगे चलकर आप अपने products, services और
+      काम के अवसर Deshake पर जोड़ सकेंगे।
+    </p>
+
+  </div>
+
+</section>
+
+
+<section class="section" id="products">
+
+  <div class="card">
+
+    <h3>📘 Gaon Se Apna Kaam - Deshake</h3>
+
+    <p>
+      अपना काम शुरू करने और आगे बढ़ाने के लिए
+      practical digital guide।
+    </p>
+
+    <p><strong>₹499</strong></p>
+
+    <a class="button"
+       href="https://ownstreet.in/anukumari/p/gan-se-apna-kaam-deshake"
+       target="_blank">
+       Buy Now
+    </a>
+
+  </div>
+
+</section>
+
+
+<section class="section" id="contact">
+
+  <div class="card">
+
+    <h3>📞 Deshake से जुड़ें</h3>
+
+    <p>
+      जल्द ही यहाँ registration और
+      अपना काम जोड़ने की सुविधा उपलब्ध होगी।
+    </p>
+
+  </div>
+
+</section>
+
+
+<footer>
+
+  <p>© 2026 Deshake</p>
+  <p>गाँव से डिजिटल अवसरों की ओर</p>
+
+</footer>
+
+
+<script>
+
+let steps = [];
+let completed = 0;
+
+function createPlan() {
+
+  const goal = document.getElementById("goal").value.trim();
+
+  if (!goal) {
+    alert("पहले अपना काम लिखिए।");
+    return;
+  }
+
+  steps = [
+    "अपने काम को समझें और जरूरी सामग्री तैयार करें।",
+    "काम का पहला छोटा हिस्सा पूरा करें।",
+    "अपने काम को जाँचें और गलती सुधारें।",
+    "अगला हिस्सा पूरा करें।",
+    "पूरे काम की दोबारा समीक्षा करें।",
+    "अंतिम जाँच करें और अपना काम पूरा करें।"
+  ];
+
+  completed = 0;
+
+  showSteps(goal);
+}
+
+
+function showSteps(goal) {
+
+  let html = "";
+
+  html += "<h3>🎯 आपका Goal</h3>";
+  html += "<p><strong>" + escapeHtml(goal) + "</strong></p>";
+
+  html += "<p>Progress: <span id='percent'>0%</span></p>";
+
+  html += `
+    <div class="progress">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+  `;
+
+  steps.forEach(function(step, index) {
+
+    html += `
+      <div class="step" id="step-${index}">
+        <strong>Step ${index + 1}</strong>
+        <p>${step}</p>
+        <button onclick="completeStep(${index})">
+          यह Step पूरा हुआ
+        </button>
+      </div>
+    `;
+
+  });
+
+  html += "<div id='completeMessage'></div>";
+
+  document.getElementById("result").innerHTML = html;
+}
+
+
+function completeStep(index) {
+
+  const step = document.getElementById("step-" + index);
+
+  if (step.dataset.completed === "true") {
+    return;
+  }
+
+  step.dataset.completed = "true";
+
+  step.style.opacity = "0.55";
+
+  completed++;
+
+  const percent = Math.round((completed / steps.length) * 100);
+
+  document.getElementById("percent").innerText = percent + "%";
+
+  document.getElementById("progressBar").style.width = percent + "%";
+
+  if (completed === steps.length) {
+
+    document.getElementById("completeMessage").innerHTML = `
+      <div class="card">
+        <h2>🎉 काम पूरा हो गया!</h2>
+        <p>
+          आपने अपना पूरा Goal पूरा कर लिया।
+        </p>
+        <strong>100% Complete</strong>
+      </div>
+    `;
+
+  }
+
+}
+
+
+function escapeHtml(text) {
+
+  const div = document.createElement("div");
+
+  div.innerText = text;
+
+  return div.innerHTML;
+
+}
+
+</script>
+
+</body>
+</html>
