@@ -861,11 +861,9 @@ function completeStep(index) {
   }
 
 }
+/* DESHAKE AI TUTOR - REAL AI */
 
-
-/* DESHAKE AI TUTOR - DEMO */
-
-function askDeshakeTutor() {
+async function askDeshakeTutor() {
 
   const question =
     document
@@ -873,57 +871,55 @@ function askDeshakeTutor() {
       .value
       .trim();
 
-
   const answer =
     document.getElementById("tutorAnswer");
 
-
   if (!question) {
-
     answer.innerHTML =
       "कृपया पहले अपना सवाल लिखें।";
-
     return;
-
   }
 
+  answer.innerHTML =
+    "🤖 Deshake AI सोच रहा है...";
 
-  answer.innerHTML = `
+  try {
 
-    <strong>
-      🤖 Deshake AI Tutor
-    </strong>
+    const response = await fetch(
+      "https://floral-poetry-5fcb.anu315300.workers.dev",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          question: question
+        })
+      }
+    );
 
-    <p>
-      आपने पूछा:
-      <strong>
-        ${escapeHtml(question)}
-      </strong>
-    </p>
+    const data = await response.json();
 
-    <p>
-      अभी Deshake AI Tutor का
-      demonstration mode चल रहा है।
-    </p>
+    if (!data.success) {
+      throw new Error(
+        data.error || "AI जवाब नहीं दे पाया।"
+      );
+    }
 
-    <p>
-      अगले चरण में इसे सुरक्षित AI
-      connection से जोड़ा जाएगा ताकि
-      आप अपने सवाल का वास्तविक AI
-      जवाब प्राप्त कर सकें।
-    </p>
+    answer.innerHTML = `
+      <strong>🤖 Deshake AI Tutor</strong>
+      <p>${escapeHtml(data.answer)}</p>
+    `;
 
-    <p>
-      🌾 Deshake का लक्ष्य है:
-      सीखें → Skill पाएँ → काम करें →
-      अपना सामान बेचें → कमाएँ।
-    </p>
+  } catch (error) {
 
-  `;
+    answer.innerHTML = `
+      <strong>❌ AI से जवाब नहीं मिल पाया</strong>
+      <p>${escapeHtml(error.message)}</p>
+    `;
 
-}
-
-
+  }
+  }
 /* COMING SOON */
 
 function comingSoon(feature) {
@@ -935,8 +931,7 @@ function comingSoon(feature) {
 
 }
 
-
-/* SECURITY */
+  /* SECURITY */
 
 function escapeHtml(text) {
 
