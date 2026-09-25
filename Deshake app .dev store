@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#123B78">
+
+  <title>Deshake | गाँव से अपना काम</title>
+
+  <style>
+    :root {
+      --blue: #123b78;
+      --blue-dark: #08244d;
+      --gold: #d6a83b;
+      --cream: #fffaf0;
+      --white: #ffffff;
+      --text: #172033;
+      --muted: #626b7a;
+      --border: #eadfca;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, "Noto Sans Devanagari", sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+      color: white;
+      text-align: center;
+      padding: 34px 18px;
+      border-bottom: 4px solid var(--gold);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 38px;
+    }
+
+    header p {
+      margin: 8px 0 0;
+      font-size: 17px;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: white;
+      padding: 10px 8px;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,.08);
+    }
+
+    nav a {
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: bold;
+      margin: 4px 7px;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: #9b7417;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 50px 18px 40px;
+    }
+
+    .hero h2 {
+      color: var(--blue);
+      font-size: 30px;
+      margin: 0 0 12px;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 10px auto;
+      font-size: 18px;
+    }
+
+    .section {
+      max-width: 1050px;
+      margin: auto;
+      padding: 28px 16px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 5px 22px rgba(0,0,0,.06);
+      margin-bottom: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .feature {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+      text-align: center;
+    }
+
+    .icon {
+      font-size: 34px;
+    }
+
+    h2,
+    h3 {
+      color: var(--blue);
+    }
+
+    textarea,
+    select {
+      width: 100%;
+      border: 1px solid #c9cdd4;
+      border-radius: 10px;
+      padding: 13px;
+      font: inherit;
+      background: white;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .button {
+      display: inline-block;
+      border: 0;
+      border-radius: 10px;
+      padding: 12px 18px;
+      margin: 5px 3px;
+      background: var(--blue);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .button.gold {
+      background: #9b7417;
+    }
+
+    .button.light {
+      background: #edf3fa;
+      color: var(--blue);
+      border: 1px solid #ccd9e8;
+    }
+
+    .answer {
+      background: #f5f9ff;
+      border-left: 5px solid var(--blue);
+      padding: 16px;
+      border-radius: 10px;
+      margin-top: 16px;
+      min-height: 55px;
+    }
+
+    .voice-box {
+      margin-top: 22px;
+      padding: 20px;
+      background: #fff8e5;
+      border: 1px solid #ead18a;
+      border-top: 4px solid var(--gold);
+      border-radius: 16px;
+    }
+
+    .voice-controls {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .status {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 8px;
+    }
+
+    .steps {
+      margin-top: 15px;
+    }
+
+    .step {
+      background: white;
+      border-left: 5px solid var(--blue);
+      border-radius: 10px;
+      padding: 14px;
+      margin: 10px 0;
+    }
+
+    footer {
+      background: var(--blue);
+      color: white;
+      text-align: center;
+      padding: 25px;
+      margin-top: 25px;
+      border-top: 4px solid var(--gold);
+    }
+
+    @media (max-width: 700px) {
+      header h1 {
+        font-size: 30px;
+      }
+
+      .hero h2 {
+        font-size: 25px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .voice-controls {
+        grid-template-columns: 1fr;
+      }
+
+      nav a {
+        font-size: 13px;
+        margin: 3px;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Deshake</h1>
+  <p>गाँव से अपना काम • Skill • Job • Business • Learning</p>
+</header>
+
+<nav>
+  <a href="#home">Home</a>
+  <a href="#ai">AI Tutor</a>
+  <a href="#voice">AI Voice</a>
+  <a href="#learning">Learning</a>
+  <a href="#work">अपना काम</a>
+  <a href="#product">Product</a>
+</nav>
+
+<section class="hero" id="home">
+
+  <h2>🌾 गाँव से डिजिटल अवसरों की ओर</h2>
+
+  <p>
+    Deshake एक digital platform concept है जो learning,
+    skills, local work, creators और छोटे businesses को
+    digital opportunities से जोड़ने के लिए बनाया जा रहा है।
+  </p>
+
+  <p>
+    <strong>
+      सीखें → Skill पाएँ → काम करें → बेचें → आगे बढ़ें
+    </strong>
+  </p>
+
+  <a class="button" href="#ai">
+    🤖 Deshake AI Tutor
+  </a>
+
+  <a class="button gold" href="#voice">
+    🔊 AI Voice
+  </a>
+
+</section>
+
+
+<section class="section">
+
+  <div class="grid">
+
+    <div class="feature">
+      <div class="icon">🤖</div>
+      <h3>AI Tutor</h3>
+      <p>सवाल पूछकर सीखें।</p>
+    </div>
+
+    <div class="feature">
+      <div class="icon">📚</div>
+      <h3>Learning</h3>
+      <p>Skills और practice।</p>
+    </div>
+
+    <div class="feature">
+      <div class="icon">💼</div>
+      <h3>Jobs</h3>
+      <p>Future opportunities।</p>
+    </div>
+
+    <div class="feature">
+      <div class="icon">🛍️</div>
+      <h3>Marketplace</h3>
+      <p>Products और services।</p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="section" id="ai">
+
+  <div class="card">
+
+    <h2>🤖 Deshake AI Tutor</h2>
+
+    <p>
+      अपना सवाल लिखिए।
+    </p>
+
+    <textarea
+      id="question"
+      placeholder="उदाहरण: मैं घर से कौन सा काम शुरू कर सकती हूँ?"
+    ></textarea>
+
+    <button class="button" onclick="askTutor()">
+      📤 सवाल भेजें
+    </button>
+
+    <div id="answer" class="answer">
+      नमस्ते! मैं Deshake AI Tutor हूँ।
+      अपना सवाल लिखकर भेजें।
+    </div>
+
+
+    <!-- VOICE -->
+
+    <div class="voice-box" id="voice">
+
+      <h3>🔊 Deshake AI Voice</h3>
+
+      <p>
+        किसी text को अपने फोन की उपलब्ध Hindi/English voice में सुनें।
+      </p>
+
+      <textarea id="voiceText">नमस्ते! Deshake में आपका स्वागत है। सीखिए, अपना काम शुरू कीजिए और आगे बढ़िए।</textarea>
+
+      <div class="voice-controls">
+
+        <div>
+          <label>
+            <strong>Voice</strong>
+          </label>
+
+          <select id="voiceSelect">
+            <option>Voice लोड हो रही है...</option>
+          </select>
+        </div>
+
+        <div>
+          <label>
+            <strong>Speed</strong>
+          </label>
+
+          <select id="voiceRate">
+            <option value="0.75">धीमी</option>
+            <option value="0.9" selected>सामान्य</option>
+            <option value="1.1">तेज़</option>
+            <option value="1.25">बहुत तेज़</option>
+          </select>
+        </div>
+
+      </div>
+
+      <button class="button" onclick="speakText()">
+        🔊 सुनें
+      </button>
+
+      <button class="button light" onclick="pauseVoice()">
+        ⏸️ Pause
+      </button>
+
+      <button class="button light" onclick="resumeVoice()">
+        ▶️ Resume
+      </button>
+
+      <button class="button light" onclick="stopVoice()">
+        ⏹️ Stop
+      </button>
+
+      <div id="voiceStatus" class="status">
+        Voice तैयार की जा रही है…
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="section" id="learning">
+
+  <div class="card">
+
+    <h2>📚 Learning Plan</h2>
+
+    <p>
+      किसी भी नए skill को छोटे steps में सीखें।
+    </p>
+
+    <div class="steps">
+
+      <div class="step">
+        <strong>Step 1</strong>
+        <p>अपना goal तय करें।</p>
+      </div>
+
+      <div class="step">
+        <strong>Step 2</strong>
+        <p>जरूरी जानकारी और skill सीखें।</p>
+      </div>
+
+      <div class="step">
+        <strong>Step 3</strong>
+        <p>छोटा practical काम करें।</p>
+      </div>
+
+      <div class="step">
+        <strong>Step 4</strong>
+        <p>अपने काम की जाँच और सुधार करें।</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="section" id="work">
+
+  <div class="card">
+
+    <h2>💼 अपना काम</h2>
+
+    <p>
+      Deshake के future marketplace में local products,
+      services और skills को जोड़ने का उद्देश्य है।
+    </p>
+
+    <p>
+      🎨 Madhubani Art • 🧵 सिलाई • 🧺 Handicrafts •
+      🍲 Local Food • 🌾 Farming • 💻 Digital Services
+    </p>
+
+  </div>
+
+</section>
+
+
+<section class="section" id="product">
+
+  <div class="card">
+
+    <h2>📘 Gaon Se Apna Kaam - Deshake</h2>
+
+    <p>
+      अपना काम शुरू करने और digital opportunities समझने के लिए
+      practical guide.
+    </p>
+
+    <p>
+      <strong>₹499</strong>
+    </p>
+
+    <a
+      class="button"
+      href="https://ownstreet.in/anukumari/p/gan-se-apna-kaam-deshake"
+      target="_blank"
+      rel="noopener"
+    >
+      🛒 Buy Now
+    </a>
+
+  </div>
+
+</section>
+
+
+<footer>
+
+  <p>
+    © 2026 Deshake
+  </p>
+
+  <p>
+    गाँव से डिजिटल अवसरों की ओर
+  </p>
+
+</footer>
+
+
+<script>
+
+  /*
+   * ==========================================
+   * DESHAKE AI TUTOR
+   * ==========================================
+   *
+   * Existing Deshake Worker endpoint.
+   *
+   * IMPORTANT:
+   * No API key is placed in this frontend.
+   */
+
+  const AI_WORKER =
+    "https://floral-poetry-5fcb.anu315300.workers.dev";
+
+
+  function escapeHTML(value) {
+
+    const div = document.createElement("div");
+
+    div.textContent = value;
+
+    return div.innerHTML;
+
+  }
+
+
+  async function askTutor() {
+
+    const question =
+      document.getElementById("question").value.trim();
+
+    const answer =
+      document.getElementById("answer");
+
+
+    if (!question) {
+
+      answer.textContent =
+        "कृपया पहले अपना सवाल लिखिए।";
+
+      return;
+
+    }
+
+
+    answer.innerHTML =
+      "🤖 Deshake AI जवाब तैयार कर रहा है…";
+
+
+    try {
+
+      const response = await fetch(
+        AI_WORKER,
+        {
+          method: "POST",
+
+          headers: {
+            "Content-Type": "application/json"
+          },
+
+          body: JSON.stringify({
+            question: question
+          })
+        }
+      );
+
+
+      if (!response.ok) {
+
+        throw new Error(
+          "AI Worker अभी सही response नहीं दे रहा है।"
+        );
+
+      }
+
+
+      const data =
+        await response.json();
+
+
+      if (!data.success) {
+
+        throw new Error(
+          data.error ||
+          "AI उत्तर उपलब्ध नहीं है।"
+        );
+
+      }
+
+
+      const text =
+        data.answer ||
+        "AI ने कोई उत्तर नहीं दिया।";
+
+
+      answer.innerHTML =
+
+        "<strong>🤖 Deshake AI Tutor</strong>" +
+
+        "<p>" +
+        escapeHTML(text) +
+        "</p>" +
+
+        "<button class='button' onclick='speakAIAnswer()'>" +
+        "🔊 जवाब सुनें" +
+        "</button>";
+
+    }
+
+    catch (error) {
+
+      answer.innerHTML =
+
+        "<strong>⚠️ AI Tutor अभी उपलब्ध नहीं है</strong>" +
+
+        "<p>" +
+        escapeHTML(error.message) +
+        "</p>" +
+
+        "<p>" +
+        "नीचे की Voice सुविधा अलग से काम कर सकती है।" +
+        "</p>";
+
+    }
+
+  }
+
+
+  function speakAIAnswer() {
+
+    const paragraph =
+      document.querySelector("#answer p");
+
+
+    if (!paragraph) {
+      return;
+    }
+
+
+    document.getElementById("voiceText").value =
+      paragraph.textContent;
+
+
+    document.getElementById("voice")
+      .scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+
+
+    setTimeout(
+      speakText,
+      300
+    );
+
+  }
+
+
+  /*
+   * ==========================================
+   * DESHAKE VOICE
+   * ==========================================
+   *
+   * Browser/device Text-to-Speech.
+   *
+   * This is intentionally API-key free.
+   */
+
+  let availableVoices = [];
+
+
+  function loadVoices() {
+
+    if (!("speechSynthesis" in window)) {
+
+      document.getElementById("voiceStatus")
+        .textContent =
+        "इस browser/device में Text-to-Speech उपलब्ध नहीं है।";
+
+      return;
+
+    }
+
+
+    availableVoices =
+      window.speechSynthesis.getVoices();
+
+
+    const select =
+      document.getElementById("voiceSelect");
+
+
+    select.innerHTML = "";
+
+
+    const hindiVoices =
+      availableVoices.filter(
+        voice =>
+          /^hi[-_]/i.test(voice.lang) ||
+          /hindi/i.test(voice.name)
+      );
+
+
+    const englishVoices =
+      availableVoices.filter(
+        voice =>
+          /^en[-_]/i.test(voice.lang)
+      );
+
+
+    const otherVoices =
+      availableVoices.filter(
+        voice =>
+          !hindiVoices.includes(voice) &&
+          !englishVoices.includes(voice)
+      );
+
+
+    const orderedVoices = [
+      ...hindiVoices,
+      ...englishVoices,
+      ...otherVoices
+    ];
+
+
+    orderedVoices.forEach(
+      voice => {
+
+        const option =
+          document.createElement("option");
+
+
+        option.value =
+          availableVoices.indexOf(voice);
+
+
+        option.textContent =
+          voice.name +
+          " (" +
+          voice.lang +
+          ")";
+
+
+        select.appendChild(option);
+
+      }
+    );
+
+
+    if (hindiVoices.length) {
+
+      select.value =
+        String(
+          availableVoices.indexOf(
+            hindiVoices[0]
+          )
+        );
+
+    }
+
+
+    document.getElementById("voiceStatus")
+      .textContent =
+      orderedVoices.length
+        ? "Voice तैयार है।"
+        : "Device की default voice इस्तेमाल होगी।";
+
+  }
+
+
+  function speakText() {
+
+    if (!("speechSynthesis" in window)) {
+
+      alert(
+        "आपके browser/device में Text-to-Speech उपलब्ध नहीं है।"
+      );
+
+      return;
+
+    }
+
+
+    const text =
+      document.getElementById("voiceText")
+        .value.trim();
+
+
+    if (!text) {
+
+      alert(
+        "पहले सुनने के लिए text लिखिए।"
+      );
+
+      return;
+
+    }
+
+
+    window.speechSynthesis.cancel();
+
+
+    const utterance =
+      new SpeechSynthesisUtterance(text);
+
+
+    const selected =
+      document.getElementById("voiceSelect")
+        .value;
+
+
+    if (
+      selected !== "" &&
+      availableVoices[selected]
+    ) {
+
+      utterance.voice =
+        availableVoices[selected];
+
+    }
+
+
+    utterance.rate =
+      parseFloat(
+        document.getElementById("voiceRate")
+          .value
+      ) || 0.9;
+
+
+    utterance.pitch = 1;
+    utterance.volume = 1;
+
+
+    utterance.onstart =
+      function () {
+
+        document.getElementById("voiceStatus")
+          .textContent =
+          "🔊 आवाज़ चल रही है…";
+
+      };
+
+
+    utterance.onend =
+      function () {
+
+        document.getElementById("voiceStatus")
+          .textContent =
+          "✅ Voice पूरी हो गई।";
+
+      };
+
+
+    utterance.onerror =
+      function () {
+
+        document.getElementById("voiceStatus")
+          .textContent =
+          "⚠️ Voice चल नहीं पाई।";
+
+      };
+
+
+    window.speechSynthesis
+      .speak(utterance);
+
+  }
+
+
+  function pauseVoice() {
+
+    if (
+      "speechSynthesis" in window &&
+      window.speechSynthesis.speaking
+    ) {
+
+      window.speechSynthesis.pause();
+
+    }
+
+  }
+
+
+  function resumeVoice() {
+
+    if (
+      "speechSynthesis" in window &&
+      window.speechSynthesis.paused
+    ) {
+
+      window.speechSynthesis.resume();
+
+    }
+
+  }
+
+
+  function stopVoice() {
+
+    if (
+      "speechSynthesis" in window
+    ) {
+
+      window.speechSynthesis.cancel();
+
+    }
+
+
+    document.getElementById("voiceStatus")
+      .textContent =
+      "⏹️ Voice रोक दी गई।";
+
+  }
+
+
+  if (
+    "speechSynthesis" in window
+  ) {
+
+    loadVoices();
+
+    window.speechSynthesis.onvoiceschanged =
+      loadVoices;
+
+  }
+
+</script>
+
+</body>
+</html>
